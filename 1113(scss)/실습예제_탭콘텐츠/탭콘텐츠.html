@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SCSS실습_호버콘텐츠</title>
+    <link rel="stylesheet" href="./css/style.css" type="text/css">
+</head>
+<body>
+    <h2>SCSS실습_호버콘텐츠</h2>
+
+    <article id="banner">
+        <div class="banner_img">
+            <a href="https://www...."><img src="./images/img1.jpg" alt="정수기"></a>
+        </div>
+        <ul class="banner_list">
+            <li class="on">정수기</li>
+            <li>현대백화점 블로그 리뉴얼 이벤트</li>
+            <li>Coffee Class</li>
+            <li>큐밍 더케어 큐브</li>
+        </ul>
+    </article>
+
+    <script>
+        const data = [
+        { img: 'img1.jpg', link: 'https://www....' },
+        { img: 'img2.jpg', link: 'https://www2....' },
+        { img: 'img3.jpg', link: 'https://www3....' },
+        { img: 'img4.jpg', link: 'https://www4....' },
+        ];
+        const bannerList = document.querySelectorAll('#banner .banner_list li');
+        const aLink   = document.querySelector('#banner .banner_img a');
+        const bannerImg = document.querySelector('#banner .banner_img img');
+
+        bannerList[0].classList.add('on');
+
+        bannerList.forEach(function(item,index){
+
+            item.addEventListener('mouseenter',function(){
+                bannerImg.src = `./images/${data[index].img}`;
+                bannerImg.alt = item.textContent;
+                aLink.href  = data[index].link;
+
+                // on클래스 삭제
+                bannerList.forEach(li =>{
+                    li.classList.remove('on');
+                });
+
+                item.classList.add('on');
+            });
+        });
+    </script>
+    
+</body>
+</html>

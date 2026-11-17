@@ -1,0 +1,107 @@
+@charset "utf-8";
+
+//변수 선언
+$box_center : 0px auto;
+$base_width:1200px;
+$main_color : #023586;
+$sub_color_w:#fff;
+$sub_color_g:#333;
+
+$txt_style_un: underline;
+
+@mixin hover_underline{
+  &:hover{
+    text-decoration: $txt_style_un;
+  }
+}
+
+@mixin gradient_overlay{
+  content: '';
+  position: absolute;
+  top: 0; bottom: 73px; left: 0; right: 0;
+  background: linear-gradient(to bottom,rgba(0,0,0,0),rgba(0,0,0,.5));
+  transition: 0.5s;
+  opacity: 0;
+  pointer-events: none;
+}
+
+@mixin text_normal{
+  color: #000;
+  text-decoration: none;
+}
+
+.promotion > a{
+  position: absolute;
+  right: 10px;
+  top: 5px;
+  text-transform: uppercase;
+  @include text_normal;
+  font-weight: bold;
+  border-bottom: 2px solid #000;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+ul,ol,li{
+  list-style: none;
+}
+
+.promotion *{ padding: 0px; margin: 0px;}
+.promotion{
+  width: $base_width;
+  margin: $box_center;
+  border: 1px solid $sub_color_g;
+  position: relative;
+}
+.promotion h3{
+  text-transform: uppercase;
+  font-weight: bold;
+  margin-left: 5px;
+  
+}
+.promotion ul{
+  display: flex;
+  justify-content: space-around;
+}
+.promotion ul li{
+  width: 23%;
+  margin: 1% 0px;
+}
+.promotion ul li a{
+  position: relative;
+  display: block;
+}
+
+// 상단 진행중 태그
+.promotion ul li a .tag{
+  background-color: $main_color;
+  font-size: 10px;
+  padding: 2px 5px;
+  color: $sub_color_w;
+  position: absolute;
+}
+
+// 이미지
+.promotion img{ width: 100%;}
+.promotion ul li a::after{ @include gradient_overlay;}
+.promotion ul li a:has(img:hover)::after{ opacity: 1;}
+
+// 이미지 아래 제목 태그
+.promotion ul li a .c_title{
+  display: inline-block;
+  font-size: 18px;
+  font-weight: bold;
+  margin: 4px 0 12px 0;
+  @include hover_underline;
+  @include text_normal;
+}
+
+// READ MORE
+.promotion ul li a+a{
+  display: block;
+  text-transform: uppercase;
+  font-size: 12px;
+  @include text_normal;
+  color: $sub_color_g;
+  @include hover_underline;
+}

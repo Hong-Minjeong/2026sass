@@ -1,0 +1,180 @@
+@charset "UTF-8";
+/* ==========================================================
+   SASS 학습하기 - 목차 페이지
+   컨셉 : "새싹 학습노트" (파스텔 그린 / 식물이 자라듯 날마다 성장)
+   - 일차별 카드(dl)가 한 칸씩 자라나는 새싹 노트 느낌
+   - SASS 학습 페이지답게 변수, 맵, @each, @mixin, 중첩 문법 활용
+   ========================================================== */
+/* ---------- 1. 변수 ---------- */
+/* 일차별 포인트 컬러 (파스텔 그린 계열 5단계) */
+/* ---------- 2. 믹스인 ---------- */
+/* ---------- 3. 기본 설정 ---------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 1000px;
+  margin: 0 auto;
+  padding: 60px 30px 80px;
+  font-family: "Pretendard", "Noto Sans KR", "Malgun Gothic", sans-serif;
+  color: #3b4a3f;
+  line-height: 1.6;
+  background-color: #eaf5e4;
+  background-image: radial-gradient(#d9ecd0 2px, transparent 2px);
+  background-size: 26px 26px;
+}
+
+a {
+  text-decoration: none;
+  color: #3b4a3f;
+}
+
+/* ---------- 4. 헤더 ---------- */
+header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+header::before {
+  content: "🌱";
+  display: block;
+  font-size: 44px;
+  margin-bottom: 6px;
+}
+header h1 {
+  display: inline-block;
+  font-size: 40px;
+  letter-spacing: 2px;
+  color: #4f8f61;
+  padding: 0 10px 4px;
+  background: linear-gradient(transparent 62%, #c8e6c0 62%);
+}
+header p {
+  margin-top: 14px;
+  font-size: 16px;
+  color: #7b8f7e;
+}
+
+/* ---------- 5. 메인 : 일차별 카드 ---------- */
+main {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 26px;
+  counter-reset: day;
+}
+main dl {
+  position: relative;
+  counter-increment: day;
+  padding: 26px 26px 22px;
+  background-color: #fbfff8;
+  border-radius: 18px;
+  border: 2px solid #d3e8cb;
+  box-shadow: 0 6px 18px rgba(79, 143, 97, 0.12);
+  transition: all 0.25s ease;
+}
+main dl:last-child:nth-child(odd) {
+  grid-column: 1/-1;
+}
+main dl:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 18px rgba(79, 143, 97, 0.22);
+}
+main dl:nth-child(1) {
+  border-top: 8px solid #c8e6c0;
+}
+main dl:nth-child(1) dt::before {
+  background-color: #c8e6c0;
+}
+main dl:nth-child(2) {
+  border-top: 8px solid #b5dfb8;
+}
+main dl:nth-child(2) dt::before {
+  background-color: #b5dfb8;
+}
+main dl:nth-child(3) {
+  border-top: 8px solid #a3d8b0;
+}
+main dl:nth-child(3) dt::before {
+  background-color: #a3d8b0;
+}
+main dl:nth-child(4) {
+  border-top: 8px solid #93d0ab;
+}
+main dl:nth-child(4) dt::before {
+  background-color: #93d0ab;
+}
+main dl:nth-child(5) {
+  border-top: 8px solid #84c8a4;
+}
+main dl:nth-child(5) dt::before {
+  background-color: #84c8a4;
+}
+main {
+  /* 일차 제목 */
+}
+main dt {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+  padding-bottom: 12px;
+  font-size: 17px;
+  font-weight: bold;
+  color: #4f8f61;
+  border-bottom: 2px dashed #cfe5c7;
+}
+main dt::before {
+  content: counter(day);
+  flex: 0 0 34px;
+  width: 34px;
+  height: 34px;
+  line-height: 34px;
+  text-align: center;
+  font-size: 16px;
+  color: #fff;
+  border-radius: 50%;
+}
+main {
+  /* 학습 항목 링크 */
+}
+main dd {
+  margin: 6px 0;
+}
+main dd a {
+  position: relative;
+  display: block;
+  padding: 8px 12px 8px 30px;
+  font-size: 14.5px;
+  border-radius: 10px;
+  transition: all 0.2s ease;
+}
+main dd a::before {
+  content: "🍃";
+  position: absolute;
+  left: 8px;
+  top: 8px;
+  font-size: 13px;
+  opacity: 0.55;
+  transition: all 0.2s ease;
+}
+main dd a:hover {
+  color: #2f5d3d;
+  background-color: #e3f3dc;
+  padding-left: 36px;
+}
+main dd a:hover::before {
+  opacity: 1;
+}
+
+/* ---------- 6. 푸터 ---------- */
+footer {
+  margin-top: 50px;
+  text-align: center;
+  font-size: 13px;
+  color: #7b8f7e;
+}
+footer::after {
+  content: "🌿 오늘도 한 뼘 성장 🌿";
+}/*# sourceMappingURL=indexStyle.css.map */

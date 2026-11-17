@@ -1,0 +1,104 @@
+.promotion > a {
+  position: absolute;
+  right: 10px;
+  top: 5px;
+  text-transform: uppercase;
+  color: #000;
+  text-decoration: none;
+  font-weight: bold;
+  border-bottom: 2px solid #000;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+ul, ol, li {
+  list-style: none;
+}
+
+.promotion * {
+  padding: 0px;
+  margin: 0px;
+}
+
+.promotion {
+  width: 1200px;
+  margin: 0px auto;
+  border: 1px solid #333;
+  position: relative;
+}
+
+.promotion h3 {
+  text-transform: uppercase;
+  font-weight: bold;
+  margin-left: 5px;
+}
+
+.promotion ul {
+  display: flex;
+  justify-content: space-around;
+}
+
+.promotion ul li {
+  width: 23%;
+  margin: 1% 0px;
+}
+
+.promotion ul li a {
+  position: relative;
+  display: block;
+}
+
+.promotion ul li a .tag {
+  background-color: #023586;
+  font-size: 10px;
+  padding: 2px 5px;
+  color: #fff;
+  position: absolute;
+}
+
+.promotion img {
+  width: 100%;
+}
+
+.promotion ul li a::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 73px;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5));
+  transition: 0.5s;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.promotion ul li a:has(img:hover)::after {
+  opacity: 1;
+}
+
+.promotion ul li a .c_title {
+  display: inline-block;
+  font-size: 18px;
+  font-weight: bold;
+  margin: 4px 0 12px 0;
+}
+.promotion ul li a .c_title:hover {
+  text-decoration: underline;
+}
+.promotion ul li a .c_title {
+  color: #000;
+  text-decoration: none;
+}
+
+.promotion ul li a + a {
+  display: block;
+  text-transform: uppercase;
+  font-size: 12px;
+  color: #000;
+  text-decoration: none;
+  color: #333;
+}
+.promotion ul li a + a:hover {
+  text-decoration: underline;
+}/*# sourceMappingURL=parstyle.css.map */

@@ -1,0 +1,207 @@
+@charset "utf-8";
+
+/* ==========================================================
+   SASS 학습하기 - 목차 페이지
+   컨셉 : "새싹 학습노트" (파스텔 그린 / 식물이 자라듯 날마다 성장)
+   - 일차별 카드(dl)가 한 칸씩 자라나는 새싹 노트 느낌
+   - SASS 학습 페이지답게 변수, 맵, @each, @mixin, 중첩 문법 활용
+   ========================================================== */
+
+/* ---------- 1. 변수 ---------- */
+$width: 1000px;
+$radius: 18px;
+
+$bg:        #eaf5e4;   // 전체 배경 (연한 민트 그린)
+$bg-dot:    #d9ecd0;   // 배경 점무늬
+$card:      #fbfff8;   // 카드 배경
+$text:      #3b4a3f;   // 기본 글자색 (진한 올리브 그레이)
+$text-soft: #7b8f7e;   // 보조 글자색
+$point:     #6fae7f;   // 포인트 그린
+$point-dk:  #4f8f61;   // 진한 포인트
+
+$font: 'Pretendard', 'Noto Sans KR', 'Malgun Gothic', sans-serif;
+
+/* 일차별 포인트 컬러 (파스텔 그린 계열 5단계) */
+$day-colors: (
+  1: #c8e6c0,
+  2: #b5dfb8,
+  3: #a3d8b0,
+  4: #93d0ab,
+  5: #84c8a4
+);
+
+/* ---------- 2. 믹스인 ---------- */
+@mixin card-shadow($alpha: 0.12) {
+  box-shadow: 0 6px 18px rgba(79, 143, 97, $alpha);
+}
+
+@mixin transition($time: 0.25s) {
+  transition: all $time ease;
+}
+
+/* ---------- 3. 기본 설정 ---------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: $width;
+  margin: 0 auto;
+  padding: 60px 30px 80px;
+  font-family: $font;
+  color: $text;
+  line-height: 1.6;
+  background-color: $bg;
+  background-image: radial-gradient($bg-dot 2px, transparent 2px);
+  background-size: 26px 26px;
+}
+
+a {
+  text-decoration: none;
+  color: $text;
+}
+
+/* ---------- 4. 헤더 ---------- */
+header {
+  text-align: center;
+  margin-bottom: 50px;
+
+  // 제목 위 새싹 아이콘
+  &::before {
+    content: "🌱";
+    display: block;
+    font-size: 44px;
+    margin-bottom: 6px;
+  }
+
+  h1 {
+    display: inline-block;
+    font-size: 40px;
+    letter-spacing: 2px;
+    color: $point-dk;
+    padding: 0 10px 4px;
+    // 형광펜처럼 아래쪽만 칠하기
+    background: linear-gradient(transparent 62%, #c8e6c0 62%);
+  }
+
+  p {
+    margin-top: 14px;
+    font-size: 16px;
+    color: $text-soft;
+  }
+}
+
+/* ---------- 5. 메인 : 일차별 카드 ---------- */
+main {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 26px;
+  counter-reset: day;
+
+  dl {
+    position: relative;
+    counter-increment: day;
+    padding: 26px 26px 22px;
+    background-color: $card;
+    border-radius: $radius;
+    border: 2px solid #d3e8cb;
+    @include card-shadow;
+    @include transition;
+
+    // 마지막 카드가 홀수일 때 한 줄 전체 사용
+    &:last-child:nth-child(odd) {
+      grid-column: 1 / -1;
+    }
+
+    &:hover {
+      transform: translateY(-4px);
+      @include card-shadow(0.22);
+    }
+
+    // 일차별 상단 띠 색상 (@each 반복문)
+    @each $n, $color in $day-colors {
+      &:nth-child(#{$n}) {
+        border-top: 8px solid $color;
+
+        dt::before {
+          background-color: $color;
+        }
+      }
+    }
+  }
+
+  /* 일차 제목 */
+  dt {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 14px;
+    padding-bottom: 12px;
+    font-size: 17px;
+    font-weight: bold;
+    color: $point-dk;
+    border-bottom: 2px dashed #cfe5c7;
+
+    // 자동 번호 배지 (1, 2, 3 ...)
+    &::before {
+      content: counter(day);
+      flex: 0 0 34px;
+      width: 34px;
+      height: 34px;
+      line-height: 34px;
+      text-align: center;
+      font-size: 16px;
+      color: #fff;
+      border-radius: 50%;
+    }
+  }
+
+  /* 학습 항목 링크 */
+  dd {
+    margin: 6px 0;
+
+    a {
+      position: relative;
+      display: block;
+      padding: 8px 12px 8px 30px;
+      font-size: 14.5px;
+      border-radius: 10px;
+      @include transition(0.2s);
+
+      // 나뭇잎 모양 불릿
+      &::before {
+        content: "🍃";
+        position: absolute;
+        left: 8px;
+        top: 8px;
+        font-size: 13px;
+        opacity: 0.55;
+        @include transition(0.2s);
+      }
+
+      &:hover {
+        color: #2f5d3d;
+        background-color: #e3f3dc;
+        padding-left: 36px;
+
+        &::before {
+          opacity: 1;
+        }
+      }
+    }
+  }
+}
+
+/* ---------- 6. 푸터 ---------- */
+footer {
+  margin-top: 50px;
+  text-align: center;
+  font-size: 13px;
+  color: $text-soft;
+
+  &::after {
+    content: "🌿 오늘도 한 뼘 성장 🌿";
+  }
+}

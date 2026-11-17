@@ -1,0 +1,36 @@
+@charset "utf-8";
+
+*{margin: 0; padding: 0;}
+ul,li{list-style: none;}
+#product{
+  width: 1000px;
+  margin: 0 auto;
+  border: 1px solid #f00;
+}
+
+#product h2{}
+
+#product .cont_list{
+  box-sizing: border-box;
+  height: 400px;
+}
+
+#product .cont_list::after{
+  // float를 자식에게 사용하면 부모높이가 사라져서 부모의 높이를 살리기위해 높이값이나 :after값을 줌
+  display: block;
+  content: '';
+  clear: both;
+}
+
+#product .cont_list li:first-child{
+  width: 600px; height: 400px;
+  background-color: #98c898;
+  float: left;
+}
+
+#product .cont_list li{
+  width: 400px; height: 127px;
+  background: #0f0;
+  margin-bottom: 10px;
+  float: right;
+}

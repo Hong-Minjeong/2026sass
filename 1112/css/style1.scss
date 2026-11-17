@@ -1,0 +1,117 @@
+@charset "utf-8";
+
+// 변수선언
+$bg_color_y: #ff0;
+$bg_color_m: rgb(95,0,128);
+
+$txt_color01:#f00;
+$txt_color02:#00f;
+$txt_color_w:#fff;
+$border01:2px solid #000;
+
+$line_color_g: #ccc;
+
+@mixin h3txt{
+  color: $txt_color01;
+  background-color: $bg_color_y;
+}
+
+.title01{
+  @include h3txt;
+}
+
+.title02{
+  @include h3txt;
+  // background-color: $bg_color_y;
+  color: $txt_color02;
+}
+
+.title01:hover, .title02:hover{
+  border: $border01;
+}
+
+// 실습1. 글자 생략기호 나오게 하는 서식
+@mixin txt_over{
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.p01{
+  @include txt_over;
+  width: 350px;
+  border: 1px solid #f00;
+  background-color: $bg_color_y;
+}
+
+// 실습1. 버튼 글자 서식
+@mixin btn_txt{
+  font-family: "Noto Sans";
+  font-weight: bold;
+  font-size: 20px;
+
+}
+
+// 실습1. 버튼 모양 서식
+@mixin btn_area{
+  border: 1px solid $line_color_g;
+  padding: 0px 10px;
+  width: 170px;height: 56px;
+  cursor: pointer;
+}
+@mixin btn{
+  @include btn_txt;
+  @include btn_area;
+}
+.reset_btn{
+  @include btn;
+}
+.cart_btn{
+  @include btn;
+  background-color: $bg_color_m;
+  color: $txt_color_w;
+}
+
+// 실습2. 모바일 토글버튼
+
+@mixin toggle_shape{
+  display: block;
+  box-sizing: border-box;
+  width: 50px;
+  height: 50px;
+  padding: 5px 5px;
+  cursor: pointer;
+  border: $border01;
+  margin-bottom: 8px; 
+}
+
+@mixin bar_shape{
+  display: block;
+  width: 100%;
+  height: 6px;
+  margin-bottom: 8px; 
+  border-radius: 10px;
+  background-color: $bg_color_m;
+  opacity: 1;
+}
+
+$time: 0.5s;
+.toggle_btn, .toggle{
+  @include toggle_shape;
+}
+
+.bar {
+  @include bar_shape;
+  transition: $time;
+}
+
+#toggle:checked + .toggle_btn > .bar1{
+  transform: translateY(15px) rotate(45deg);
+}
+
+#toggle:checked + .toggle_btn > .bar2{
+  opacity: 0;
+}
+#toggle:checked + .toggle_btn > .bar3{
+  transform: translateY(-14px) rotate(-45deg);
+}

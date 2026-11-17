@@ -1,0 +1,115 @@
+@charset "utf-8";
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+$w: 1080px;
+$point : rgb(61,116,235);
+$line : #ccc;
+
+@mixin commonTxt($c: #333, $fs: 16px, $fw: normal) {
+  font-size: $fs;
+  color: $c;
+  font-weight: $fw;
+}
+
+@mixin coverImg($w:100%,$h:60%,$of:cover){
+  width: $w;
+  height: $h;
+  object-fit: $of;
+  display: block;
+}
+
+body {  width: $w; }
+ul,li,ol { list-style: none;}
+a { text-decoration: none;}
+section { border: 1px solid $line;}
+
+// 지역별 best 상품 텍스트
+section>h3 {
+  padding: 10px;
+  @include commonTxt(#fff,25px,bold);
+  background-color: $point;
+  text-align: center;
+  border-bottom: 1px solid blue;
+}
+
+// ul ~ li태그 내부까지
+.wrap {
+  padding: 20px 20px 0 20px;
+
+  ul {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 10px 20px;
+
+    li {
+      display: flex;
+      border-bottom: 1px solid $line;
+      padding-bottom: 10px;
+
+      a {
+        flex: 1;
+        display: flex;
+        gap: 20px;
+        
+        img {
+          @include coverImg(215px,140px);
+          flex-shrink: 0;
+        }
+        .txt {
+          margin: 15px 0 0 10px;
+          span {
+            bottom: 0px;
+          }
+        }
+      }
+      &:hover{
+        background-color: #ccc;
+      }
+    }
+
+    li:first-child {
+      border-bottom: none;
+      grid-row: 1/4;
+      a {
+        flex-direction: column;
+        gap: 0;
+        img {
+          @include coverImg(100%,330px);
+        }
+        .txt{
+          margin: 15px 0 0 0;
+        }
+      }
+    }
+
+    li:last-child {
+      border-bottom: none;
+    }
+  }
+}
+
+// 텍스트 공통 영역
+.txt {
+  @include commonTxt(#333, 16px, bold);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+
+  p {
+    margin-top: 10px;
+    @include commonTxt(#ccc, 14px, normal);
+  }
+
+  span {
+    margin-top: auto;
+    padding-right: 10px;
+    text-align: right;
+    @include commonTxt(red, 16px, bold);
+  }
+}

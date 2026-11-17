@@ -1,0 +1,135 @@
+.sns {
+  display: flex;
+  width: 200px;
+  justify-content: space-around;
+  font-size: 30px;
+  color: #333;
+}
+
+.sns li i {
+  transition: 0.3s;
+}
+
+.sns li:hover i:hover {
+  color: #f00;
+  font-size: 34px;
+}
+.sns li:hover i {
+  transform: translateY(-5px);
+}
+
+ul, ol, li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+#box01 {
+  background: #0f0;
+  border: 3px solid #f00;
+}
+
+#box02 {
+  background: #ff0;
+  border: 3px solid #00f;
+}
+
+.login_f {
+  width: 300px;
+}
+
+.login_f p {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.btn {
+  width: 200px;
+  height: 40px;
+  padding: 10px;
+  border-radius: 20px;
+  border: none;
+  text-align: center;
+  cursor: pointer;
+}
+
+.btn1 {
+  background: #5f0080;
+  color: #fff;
+}
+.btn1:hover {
+  filter: brightness(0.8);
+}
+
+.btn2 {
+  background: green;
+  color: #fff;
+}
+.btn2:hover {
+  filter: brightness(0.8);
+}
+
+.btn3 {
+  background: yellow;
+  color: #000;
+}
+.btn3:hover {
+  filter: brightness(0.8);
+}
+
+.list01 li {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.list01 li:nth-child(2) {
+  border: 3px solid green;
+}
+
+.list01 li:nth-child(3) {
+  border: 4px double red;
+}
+
+.list01 li:nth-child(4) {
+  border: 2px dotted #0f0;
+}
+
+.list01 li:last-child {
+  border: 4px dashed rgb(156, 156, 49);
+}
+
+.calender {
+  border: 1px solid #00f;
+  width: 600px;
+  border-collapse: collapse;
+}
+
+.calender caption {
+  background-color: #ff0;
+  padding: 10px 0;
+  font-weight: bold;
+}
+
+.calender td, .calender th {
+  border: 1px solid #00f;
+  text-align: center;
+  font-weight: bold;
+}
+
+.calender tr > td:first-child, .calender tr > th:first-child {
+  color: #f00;
+}
+
+.calender tr > td:last-child, .calender tr > th:last-child {
+  color: #00f;
+}
+
+.calender tr:nth-child(2n+1) {
+  background-color: #cccccc;
+}
+
+.calender tr:nth-child(2n) {
+  background-color: #aaaaaa;
+}/*# sourceMappingURL=style1.css.map */

@@ -1,0 +1,52 @@
+@charset "UTF-8";
+.list > h3 {
+  color: #333;
+  padding: 14px;
+  margin: 10px;
+  font-family: "궁서체";
+  font-size: 30px;
+  font-weight: bold;
+  font-style: italic;
+}
+.list > ul {
+  padding: 0;
+  margin: 0;
+}
+.list > ul > li {
+  list-style: none;
+}
+
+.tab {
+  width: 500px;
+  height: 300px;
+  border: 1px solid #000;
+  overflow: hidden;
+  position: relative;
+}
+.tab img {
+  width: 100%;
+}
+.tab > ul {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  background: rgba(255, 255, 255, 0.5);
+  padding: 0;
+  margin: 0;
+}
+.tab > ul > li {
+  list-style: none;
+  text-align: center;
+}
+.tab > ul > li > a {
+  color: #333;
+  text-decoration: none;
+  line-height: 70px;
+  width: 100%;
+  height: 100%;
+  padding: 15px 10px;
+  font-size: 12px;
+}
+.tab > ul > li:hover {
+  background-color: #ff0;
+}/*# sourceMappingURL=style.css.map */

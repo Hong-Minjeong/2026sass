@@ -1,0 +1,11 @@
+:root{
+  --t_color:#0f0;
+}
+
+h3{background-color: var(--t_color);}
+
+$t_color1:#333;
+
+body{
+  color: $t_color1;
+}
