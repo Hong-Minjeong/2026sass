@@ -1,0 +1,167 @@
+@charset 'utf-8';
+
+@import 'common.scss';
+
+.iconQ {
+  @include basicIcon;
+}
+
+.iconA {
+  @include basicIcon($mainColor02);
+}
+
+main {
+  >.tab_mnu {
+    padding: 20px 0;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+
+    >ul {
+      text-align: center;
+
+      >li {
+        display: inline-block;
+
+        >a {
+          font: {
+            size: 1rem;
+            weight: bold;
+          }
+
+          padding: 0px 14px;
+          color: $txtColor1;
+          position: relative;
+
+          &.act {
+            color: $mainColor01 !important;
+          }
+
+          &.act::after {
+            content: '';
+            display: inline-block;
+            width: 90%;
+            height: 4px;
+            background-color: $mainColor01;
+            position: absolute;
+            left: 10px;
+            bottom: -20px;
+          }
+        }
+
+        &::after {
+          content: '\2022';
+          color: $txtColor1;
+        }
+
+        &:last-child::after {
+          content: '';
+        }
+      }
+    }
+  }
+
+  // 탭콘텐츠 서식
+  >.tab_con {
+    width: $maxWidth;
+    margin: $boxCenter;
+
+    >section:not(:first-child) {
+      display: none;
+    }
+
+    >.cont {
+      >h2 {
+        font-size: 30px;
+        text-align: center;
+        padding: 50px 0;
+      }
+
+
+    }
+
+    #tab2 {
+      padding: 80px 80px 150px;
+      >article>h2 {
+        display: block;
+        font-size: 40px;
+        text-align: center;
+        font-weight: bold;
+        padding: 30px 0 80px;
+      }
+
+      div>.m_list {
+        border-top: 5px solid $mainColor01;
+
+        >li {
+          border-bottom: 1px solid $txtColor1;
+          overflow: hidden;
+          cursor: pointer;
+
+          >.list_q {
+            display: flex;
+            align-items: center;
+            height: 70px;
+
+            >.iconQ {
+              margin-left: 30px;
+            }
+
+            >span {
+              margin-left: 20px;
+              flex: 9;
+            }
+
+            >i {
+              color: $mainColor01;
+              font-size: 30px;
+              flex: 1;
+              transition: $time;
+            }
+          }
+
+          >.list_a {
+            max-height: 0;
+            color: #666666;
+            transition: $time;
+            margin: 0 100px 0 100px;
+            display: flex;
+            padding: 0;
+            position: relative;
+
+            >.iconA {
+              position: absolute;
+              flex-shrink: 0;
+              left: -70px;
+            }
+          }
+
+          // 펼친 상태
+          &.active {
+            background-color: #f7f7f7;
+
+            >.list_q {
+              >span {
+                color: $mainColor01;
+                font-weight: bold;
+              }
+
+              >i {
+                transform: rotate(45deg);
+              }
+            }
+
+            >.list_a {
+              border-top: 1px solid #a3a3a3;
+              padding: 25px 0;
+            }
+          }
+        }
+      }
+    }
+
+
+
+  }
+
+
+}

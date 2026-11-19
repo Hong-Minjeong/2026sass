@@ -1,0 +1,87 @@
+@charset 'utf-8';
+
+// 변수 선언
+$maxWidth: 1170px;
+$boxCenter: 0 auto;
+$mainColor01: #009223;
+$mainColor02: #ffce32;
+$bgColor01: #333;
+$txtColor1: #7c7c7c;
+$base_fontSize:12px;
+$time:0.3s;
+* { margin: 0; padding: 0;}
+
+ul,li{  list-style: none;}
+
+a {
+  text-decoration: none;
+  color: $bgColor01;
+}
+
+body{
+  font: {
+    family:'맑은 고딕', Arial, Helvetica, sans-serif;
+    weight:normal;
+    size: 16px;
+  }
+  color: $bgColor01;
+}
+
+// 함수 작성
+@function my-lighten($num) {
+  @return 0.1*$num;
+}
+
+// 아이콘 양식
+@mixin basicIcon($bg:$mainColor01){
+  background-color: $bg;
+  display: block;
+  border-radius: 50%;
+  height: 30px;
+  width: 30px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #fff;
+  text-align: center;
+}
+
+header {
+  border-top: 5px solid $mainColor01;
+  height: 150px;
+  text-align: center;
+
+  >h1 {
+    padding: 20px 0;
+
+    img {
+      width: 190px;
+    }
+  }
+}
+
+footer {
+  background-color: $bgColor01;
+  > ul.f_lnb {
+    width: $maxWidth;
+    margin: $boxCenter;
+    display: flex;
+    justify-content: left;
+    >li {
+      line-height: 50px;
+      margin: 10px 10px;
+      >a {
+        color: rgba(255, 255, 255, 1);
+      }
+      &:not(:nth-child(2)) a {
+        color: rgba(255, 255, 255, my-lighten(5));
+      }
+    }
+  }
+  address{
+    width: $maxWidth;
+    margin: $boxCenter;
+    color: rgba(255, 255, 255, my-lighten(5));
+    font-style: normal;
+    font-size: $base_fontSize;
+  }
+}
